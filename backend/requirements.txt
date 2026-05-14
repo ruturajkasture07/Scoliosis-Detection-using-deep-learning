@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+python-multipart
+torch
+torchvision
+pillow
+numpy
+opencv-python-headless
+pydantic
+albumentations
+segmentation-models-pytorch
+ultralytics
+timm
+einops
+matplotlib

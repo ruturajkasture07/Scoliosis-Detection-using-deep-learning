@@ -1,0 +1,27 @@
+# Python
+backend/venv/
+backend/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.next/
+frontend/out/
+frontend/build/
+
+# Models (Optional: exclude if too large, but user might want them)
+Models/keypointsrcnn_weights.pt
+
+# Environment
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db

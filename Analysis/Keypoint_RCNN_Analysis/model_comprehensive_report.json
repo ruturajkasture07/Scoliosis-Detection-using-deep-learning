@@ -1,0 +1,36 @@
+{
+    "Model_Configuration": {
+        "Architecture": {
+            "Model_Class": "UltimateSpineKeypointRCNN",
+            "Total_Parameters": 26083395,
+            "Trainable_Parameters": 26083395,
+            "Backbone_Layers": [
+                3,
+                4,
+                6,
+                3
+            ],
+            "Hidden_Dim": 256
+        },
+        "Tuning_Parameters": {
+            "Learning_Rate": 0.0001,
+            "Batch_Size": 12,
+            "Optimizer": "AdamW",
+            "Weight_Decay": 0.0001,
+            "Gaussian_Sigma": 3.0
+        },
+        "Training_Specs": {
+            "Target_Epochs": 50,
+            "Actual_Completed_Epochs": 50,
+            "Loss_Function": "SpatialSoftArgmaxLoss",
+            "Scheduler": "SequentialLR"
+        }
+    },
+    "Performance_Artifacts": {
+        "Best_Epoch": 34,
+        "Best_Val_Loss": 14.164253285056667,
+        "Best_Val_Pixel_Error": 6.5436962684593105,
+        "Total_Training_Time_Minutes": 119.38447957038879,
+        "Average_Time_Per_Epoch_Sec": 143.26137548446656
+    }
+}

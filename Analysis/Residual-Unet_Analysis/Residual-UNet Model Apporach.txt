@@ -1,0 +1,21 @@
+Residual-UNet Model Apporach
+
+### The Exact Approach: Pre-trained U-Net
+
+Instead of manually typing out every convolutional layer and forcing the model to learn basic shapes from zero, you are utilizing the `segmentation_models_pytorch` library to build a hybrid model.
+
+Here is how your current architecture is structured:
+
+* **The Encoder (Pre-trained):** The "downsampling" half of your U-Net is a **ResNet34** neural network. Rather than starting with random weights, we loaded weights that were pre-trained on **ImageNet** (a massive dataset of 14 million everyday images). This means the encoder *already knows* how to detect edges, gradients, lighting differences, and complex textures before it even looks at a single X-ray.
+* **The Decoder (From Scratch):** The "upsampling" half of your U-Net is initialized with random weights. Its job is to take the rich feature maps extracted by the pre-trained encoder and learn how to translate them specifically into your spinal binary masks.
+* **The Classification Head:** A final convolutional layer that squashes the output down to 1 channel (your binary mask) using the combined knowledge of the network.
+
+### Why This is the Standard for Medical AI
+
+Training deep networks entirely from scratch requires millions of images. Because medical datasets are notoriously small (your training set is 1,700 images), a from-scratch model will quickly memorize the data and overfit, exactly as you saw in your previous run where the Validation Dice stalled at ~0.64.
+
+By using Transfer Learning:
+
+1. **You prevent overfitting:** The pre-trained weights act as a powerful regularizer. The model relies on its generalized visual knowledge rather than memorizing specific X-ray artifacts.
+2. **You train faster:** The model doesn't waste the first 10 epochs figuring out what a "line" or a "curve" is. It immediately starts looking for spinal structures.
+3. **You achieve higher peaks:** As you can see from your current training run, giving the model this head start allows it to reach Validation Dice scores in the 0.80s much earlier and more stably.
