@@ -15,8 +15,8 @@ frontend/.next/
 frontend/out/
 frontend/build/
 
-# Models (Optional: exclude if too large, but user might want them)
-Models/keypointsrcnn_weights.pt
+# Models (LFS tracked)
+# Models/keypointsrcnn_weights.pt
 
 # Environment
 .env
